@@ -35,6 +35,6 @@ check "gpg" gpg "gpg --version"
 check "batcat (bat)" batcat "batcat --version"
 check "neofetch" neofetch "neofetch --version"
 check "httrack" httrack "httrack --version"
-check "docker-compose" docker-compose "docker-compose
+check "docker-compose" docker-compose "docker-compose"
 
 
