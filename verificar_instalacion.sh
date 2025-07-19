@@ -1,40 +1,47 @@
 #!/bin/bash
 
-echo "===== VERIFICACIÓN DE PROGRAMAS INSTALADOS ====="
+echo "===== RESULTADOS DE VERIFICACIÓN ====="
 
-check() {
-  if command -v $2 >/dev/null 2>&1; then
-    version_output=$($3 2>&1 | head -n 1)
-    printf "✅ %-20s %s\n" "$1:" "$version_output"
+# Función para verificar y mostrar versión o error
+verificar() {
+  comando=$1
+  nombre=$2
+  salida=$($comando 2>/dev/null)
+  if [ $? -eq 0 ]; then
+    echo "✅ $nombre: $salida"
   else
-    printf "❌ %-20s NO INSTALADO\n" "$1:"
+    echo "❌ $nombre: NO INSTALADO"
   fi
 }
 
-check "Git" git "git --version"
-check "Java (JDK)" java "java -version"
-check "Python 3" python3 "python3 --version"
-check "Pip 3" pip3 "pip3 --version"
-check "Curl" curl "curl --version"
-check "Wget" wget "wget --version"
-check "GCC (C Compiler)" gcc "gcc --version"
-check "Make" make "make --version"
-check "Node.js" node "node -v"
-check "npm" npm "npm -v"
-check "PostgreSQL" psql "psql --version"
-check "Docker" docker "docker --version"
-check "Unzip" unzip "unzip --version"
-check "Tar" tar "tar --version"
-check "Ifconfig (net-tools)" ifconfig "ifconfig --version"
-check "lsof" lsof "lsof -v"
-check "htop" htop "htop --version"
-check "tmux" tmux "tmux -V"
-check "zsh" zsh "zsh --version"
-check "jq" jq "jq --version"
-check "gpg" gpg "gpg --version"
-check "batcat (bat)" batcat "batcat --version"
-check "neofetch" neofetch "neofetch --version"
-check "httrack" httrack "httrack --version"
-check "docker-compose" docker-compose "docker-compose"
+verificar "git --version" "Git"
+verificar "java -version | head -n 1" "Java (JDK)"
+verificar "python3 --version" "Python 3"
+verificar "pip3 --version" "pip"
+verificar "curl --version | head -n 1" "curl"
+verificar "wget --version | head -n 1" "wget"
+verificar "gcc --version | head -n 1" "GCC"
+verificar "make --version | head -n 1" "make"
+verificar "node -v" "Node.js"
+verificar "npm -v" "npm"
+verificar "psql --version" "PostgreSQL"
+verificar "docker --version" "Docker"
+verificar "unzip -v | head -n 1" "Unzip"
+verificar "zip -v | head -n 1" "Zip"
+verificar "tar --version | head -n 1" "Tar"
+verificar "ifconfig --version" "ifconfig (net-tools)"
+verificar "htop --version" "htop"
+verificar "lsof -v | head -n 1" "lsof"
+verificar "tmux -V" "tmux"
+verificar "zsh --version" "zsh"
+verificar "jq --version" "jq"
+verificar "gpg --version | head -n 1" "gpg"
+verificar "batcat --version" "bat"
+verificar "neofetch --version" "neofetch"
+verificar "httrack --version" "httrack"
+verificar "docker-compose --version" "docker-compose"
+verificar "nmap --version | head -n 1" "nmap"
+
+echo "===== FIN DE VERIFICACIÓN ====="
 
 
