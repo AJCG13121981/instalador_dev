@@ -3,42 +3,66 @@
 echo "=== ACTUALIZANDO SISTEMA ==="
 sudo apt update && sudo apt upgrade -y
 
-echo "=== INSTALANDO GIT ==="
-sudo apt install git -y
+echo "=== INSTALANDO HERRAMIENTAS BÁSICAS DE DESARROLLO ==="
+sudo apt install -y \
+  git \
+  default-jdk \
+  python3 \
+  python3-pip \
+  curl \
+  wget \
+  build-essential \
+  nodejs \
+  npm \
+  postgresql \
+  postgresql-contrib \
+  docker.io \
+  zip \
+  unzip \
+  tar \
+  net-tools \
+  lsof \
+  htop
+
+echo "=== INSTALANDO HERRAMIENTAS COMPLEMENTARIAS ==="
+sudo apt install -y \
+  tmux \
+  zsh \
+  jq \
+  gnupg \
+  bat \
+  neofetch \
+  httrack \
+  docker-compose \
+  nmap
+
+echo "=== MOSTRANDO VERSIONES DE LAS HERRAMIENTAS INSTALADAS ==="
 git --version
-
-echo "=== INSTALANDO JDK ==="
-sudo apt install default-jdk -y
 java -version
-
-echo "=== INSTALANDO PYTHON + PIP ==="
-sudo apt install python3 python3-pip -y
-python3 --version && pip3 --version
-
-echo "=== INSTALANDO CURL Y WGET ==="
-sudo apt install curl wget -y
-curl --version && wget --version
-
-echo "=== INSTALANDO BUILD-ESSENTIAL ==="
-sudo apt install build-essential -y
-gcc --version && make --version
-
-echo "=== INSTALANDO NODE.JS + NPM ==="
-sudo apt install nodejs npm -y
-node -v && npm -v
-
-echo "=== INSTALANDO POSTGRESQL ==="
-sudo apt install postgresql postgresql-contrib -y
+python3 --version
+pip3 --version
+curl --version | head -n 1
+wget --version | head -n 1
+gcc --version | head -n 1
+make --version | head -n 1
+node -v
+npm -v
 psql --version
-
-echo "=== INSTALANDO DOCKER ==="
-sudo apt install docker.io -y
 docker --version
+unzip --version
+tar --version
+ifconfig --version 2>&1 | head -n 1
+lsof -v | head -n 1
+htop --version
+tmux -V
+zsh --version
+jq --version
+gpg --version | head -n 1
+batcat --version
+neofetch --version
+httrack --version | head -n 1
+docker-compose --version
+nmap --version | head -n 1
 
-echo "=== INSTALANDO ZIP, UNZIP, TAR ==="
-sudo apt install zip unzip tar -y
+echo "=== INSTALACIÓN COMPLETADA ==="
 
-echo "=== INSTALANDO HERRAMIENTAS DE RED Y SISTEMA ==="
-sudo apt install net-tools lsof htop -y
-
-echo "=== INSTALACIÓN FINALIZADA ==="

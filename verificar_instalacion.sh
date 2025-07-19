@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "===== RESULTADOS DE VERIFICACIÓN ====="
+echo "===== VERIFICACIÓN DE PROGRAMAS INSTALADOS ====="
 
 check() {
   if command -v $2 >/dev/null 2>&1; then
@@ -28,6 +28,13 @@ check "Tar" tar "tar --version"
 check "Ifconfig (net-tools)" ifconfig "ifconfig --version"
 check "lsof" lsof "lsof -v"
 check "htop" htop "htop --version"
+check "tmux" tmux "tmux -V"
+check "zsh" zsh "zsh --version"
+check "jq" jq "jq --version"
+check "gpg" gpg "gpg --version"
+check "batcat (bat)" batcat "batcat --version"
+check "neofetch" neofetch "neofetch --version"
+check "httrack" httrack "httrack --version"
+check "docker-compose" docker-compose "docker-compose
 
-echo "===== FIN DE VERIFICACIÓN ====="
 

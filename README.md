@@ -3,7 +3,7 @@
 Este proyecto permite configurar completamente una máquina Ubuntu para desarrollo sin instalaciones manuales. Solo necesitas clonar este repositorio y ejecutar dos comandos para dejar tu sistema preparado.
 
 Para empezar, se clona el repositorio desde GitHub con este comando:  
-git clone git@github.com:AJCG13121981/instalador_dev.git && cd instalador_dev 
+git clone git@github.com:AJCG13121981/instalador_dev.git && cd instalador_dev
 
 Después, se conceden permisos de ejecución a todos los archivos con:  
 chmod +x *.sh
@@ -11,7 +11,7 @@ chmod +x *.sh
 Con esto hecho, se lanza el proceso de instalación automática con:  
 ./instalador_dev.sh
 
-Durante esta fase, el sistema se actualizará y se instalarán herramientas clave como Git, Java, Python, Node.js, Docker, PostgreSQL, herramientas de red, compresores y utilidades del sistema. Si alguna ya está instalada, se omite sin modificarla. En cada caso se mostrará su versión como confirmación. Se te pedirá la contraseña sudo al inicio si no tienes privilegios activos.
+Durante esta fase, el sistema se actualizará y se instalarán herramientas clave como Git, Java, Python, Node.js, Docker, PostgreSQL, herramientas de red, compresores, analizadores, shell mejoradas y utilidades de consola. Si alguna ya está instalada, se omite sin modificarla. En cada caso se mostrará su versión como confirmación. Se te pedirá la contraseña sudo al inicio si no tienes privilegios activos.
 
 Una vez finalizada la instalación, se recomienda lanzar la verificación para comprobar que todo está correctamente instalado. Para ello se usa:  
 ./verificar_instalacion.sh
@@ -26,7 +26,7 @@ Este comando no instala nada. Recorre todas las herramientas que deberían estar
 ...  
 ===== FIN DE VERIFICACIÓN =====
 
-La instalación cubre herramientas esenciales para desarrolladores: Git, Java JDK, Python y pip, Node.js y npm, curl, wget, gcc, make, PostgreSQL, Docker, zip, unzip, tar, ifconfig (net-tools), htop y lsof.
+El sistema instalará y verificará automáticamente las siguientes herramientas: Git, JDK, Python 3, pip, Node.js, npm, curl, wget, gcc, make, PostgreSQL, Docker, unzip, zip, tar, ifconfig (net-tools), htop, lsof, tmux, zsh, jq, gpg, bat, neofetch, httrack, docker-compose y nmap.
 
 Todo este sistema ha sido probado en Ubuntu 20.04 y versiones posteriores. Requiere conexión a internet y permisos sudo durante la instalación. Está diseñado para desarrolladores que quieren ahorrar tiempo configurando su entorno desde cero.
 
