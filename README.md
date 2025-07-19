@@ -3,7 +3,7 @@
 Este proyecto permite configurar completamente una máquina Ubuntu para desarrollo sin instalaciones manuales. Solo necesitas clonar este repositorio y ejecutar dos comandos para dejar tu sistema preparado.
 
 Para empezar, se clona el repositorio desde GitHub con este comando:  
-git clone git@github.com:AJCG13121981/instalador_dev.git && cd instalador_dev
+'git clone git@github.com:AJCG13121981/instalador_dev.git && cd instalador_dev' 
 
 Después, se conceden permisos de ejecución a todos los archivos con:  
 chmod +x *.sh
