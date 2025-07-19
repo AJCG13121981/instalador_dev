@@ -2,17 +2,21 @@
 
 echo "=== COMPROBANDO ESTADO DEL SISTEMA ==="
 
-# Verificar si dpkg está bloqueado
-if sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1 || sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; then
-  echo "❌ dpkg está bloqueado. Por favor, ejecuta: sudo dpkg --configure -a"
-  echo "Abortando instalación..."
-  exit 1
-fi
-
-# Verificar errores pendientes de configuración
-if sudo test -f /var/lib/dpkg/lock || sudo test -f /var/lib/dpkg/lock-frontend; then
-  echo "❌ Se detectó bloqueo de dpkg. Ejecuta primero: sudo dpkg --configure -a"
-  exit 1
+# Verificar existencia de archivos de bloqueo
+if sudo test -f /var/lib/dpkg/lock || sudo test -f /var/lib/dpkg/lock-frontend || sudo test -f /var/cache/apt/archives/lock; then
+  echo "❌ Se detectó bloqueo de dpkg o apt."
+  read -p "¿Quieres intentar eliminar los bloqueos automáticamente? (s/n): " respuesta
+  if [[ "$respuesta" == "s" || "$respuesta" == "S" ]]; then
+    echo "🔓 Eliminando locks..."
+    sudo rm -f /var/lib/dpkg/lock
+    sudo rm -f /var/lib/dpkg/lock-frontend
+    sudo rm -f /var/cache/apt/archives/lock
+    sudo dpkg --configure -a
+    echo "✅ Locks eliminados. Continuando..."
+  else
+    echo "🛑 Abortando instalación. Ejecuta manualmente: sudo dpkg --configure -a"
+    exit 1
+  fi
 fi
 
 echo "=== ACTUALIZANDO SISTEMA ==="
