@@ -65,4 +65,33 @@ docker-compose --version
 nmap --version | head -n 1
 
 echo "=== INSTALACIÓN COMPLETADA ==="
+echo "=== INSTALANDO ZSH Y OH-MY-ZSH ==="
+
+# Instalar zsh si no está presente
+if ! command -v zsh >/dev/null 2>&1; then
+  sudo apt install zsh -y
+fi
+
+# Instalar fuentes powerline para temas
+sudo apt install fonts-powerline -y
+
+# Instalar Oh My Zsh sin preguntas
+export RUNZSH=no
+export CHSH=no
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Aplicar tema 'agnoster' en .zshrc
+sed -i 's/^ZSH_THEME=.*/ZSH_THEME="agnoster"/' ~/.zshrc
+
+# Añadir neofetch y limpiar pantalla al iniciar
+echo -e "\nneofetch\nclear" >> ~/.zshrc
+
+# Cambiar shell por defecto a zsh (solo si aún no es zsh)
+if [ "$SHELL" != "$(which zsh)" ]; then
+  chsh -s $(which zsh)
+  echo "✅ Shell cambiado a zsh (reinicia terminal para aplicar)"
+else
+  echo "ℹ️ Ya estás usando zsh"
+fi
+
 
