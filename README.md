@@ -1,42 +1,42 @@
-# 🛠️ instalador_dev
+# 🛠️ Instalación automática de entorno DEV en Ubuntu
 
-Este repositorio contiene dos scripts Bash diseñados para entornos de desarrollo en Ubuntu (máquinas virtuales o físicas). Permiten instalar herramientas básicas de desarrollo y verificar que han sido correctamente configuradas.
+Este proyecto permite configurar completamente una máquina Ubuntu para desarrollo sin instalaciones manuales. Solo necesitas clonar este repositorio y ejecutar dos comandos para dejar tu sistema preparado.
 
----
+Para empezar, se clona el repositorio desde GitHub con este comando:
+git clone git@github.com:AJCG13121981/instalador_dev.git && cd instalador_dev
 
-## 📁 Contenido
+Después, se conceden permisos de ejecución a todos los archivos con:
+chmod +x *.sh
 
-- `instalador_dev.sh` – Instala las herramientas esenciales para desarrollo.
-- `verificar_instalacion.sh` – Lista por terminal todas las herramientas instaladas con sus versiones.
+Con esto hecho, se lanza el proceso de instalación automática con:
+./instalador_dev.sh
 
----
+Durante esta fase, el sistema se actualizará y se instalarán herramientas clave como Git, Java, Python, Node.js, Docker, PostgreSQL, herramientas de red, compresores y utilidades del sistema. Si alguna ya está instalada, se omite sin modificarla. En cada caso se mostrará su versión como confirmación. Se te pedirá la contraseña sudo al inicio si no tienes privilegios activos.
 
-## 🚀 Objetivo
+Una vez finalizada la instalación, se recomienda lanzar la verificación para comprobar que todo está correctamente instalado. Para ello se usa:
+./verificar_instalacion.sh
 
-Automatizar el proceso de instalación y verificación de un entorno de desarrollo completo con un solo comando. Pensado para programadores que trabajan en entornos Ubuntu y necesitan agilidad en la configuración de su máquina.
+Este comando no instala nada. Recorre todas las herramientas que deberían estar presentes y muestra un informe como este:
 
----
+===== RESULTADOS DE VERIFICACIÓN =====
+✅ Git:                git version 2.34.1
+✅ Java (JDK):         openjdk version "11.0.20"
+✅ Python 3:           Python 3.10.12
+❌ Docker:             NO INSTALADO
+...
+===== FIN DE VERIFICACIÓN =====
 
-## ✅ Herramientas instaladas
+La instalación cubre herramientas esenciales para desarrolladores: Git, Java JDK, Python y pip, Node.js y npm, curl, wget, gcc, make, PostgreSQL, Docker, zip, unzip, tar, ifconfig (net-tools), htop y lsof.
 
-- Git
-- JDK (Java)
-- Python 3 + pip3
-- Node.js + npm
-- curl, wget
-- gcc, make
-- Docker
-- PostgreSQL
-- unzip, zip, tar
-- net-tools (ifconfig)
-- htop, lsof
+Todo este sistema ha sido probado en Ubuntu 20.04 y versiones posteriores. Requiere conexión a internet y permisos sudo durante la instalación. Está diseñado para desarrolladores que quieren ahorrar tiempo configurando su entorno desde cero.
 
----
+Este proyecto es de código abierto y se distribuye bajo licencia MIT, por lo que puedes usarlo, modificarlo o compartirlo libremente.
 
-## 🔧 Uso paso a paso
+Autor: Ángel Cumbreño  
+GitHub: @AJCG13121981
 
-### 1. Clona este repositorio
 
-```bash
-git clone git@github.com:AJCG13121981/instalador_dev.git
-cd instalador_dev
+
+
+
+
