@@ -62,6 +62,16 @@ echo "=== INSTALANDO ZSH Y OH-MY-ZSH ==="
 sudo apt install curl zsh -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-echo "✅ Shell cambiado a zsh (reinicia terminal para aplicar)"
+echo "✅ Shell cambiado a zsh (reinicia terminal para aplicar
+echo "=== INSTALANDO VISUAL STUDIO CODE ==="
+if ! command -v code &> /dev/null; then
+  wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+  sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+  sudo apt update
+  sudo apt install code -y
+else
+  echo "✅ Visual Studio Code ya está instalado"
+fi
 
 
