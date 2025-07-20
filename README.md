@@ -18,13 +18,17 @@ Lanza el instalador principal:
 
 ./instalador_dev.sh
 
-Este script comprueba si dpkg está bloqueado, actualiza el sistema con apt, instala herramientas de desarrollo (Git, JDK, Python, Node.js, PostgreSQL, Docker), herramientas de red y consola (wget, curl, unzip, htop, tmux, bat, jq, neofetch, etc.), muestra sus versiones tras la instalación y deja configurado ZSH con Oh My Zsh como shell predeterminada.
+Este script comprueba si dpkg está bloqueado (por archivos lock) y, si es así, ofrece al usuario la opción de eliminarlos automáticamente y continuar. Si el usuario acepta, los bloqueos se eliminan, se ejecuta dpkg --configure -a, y la instalación prosigue sin interrupciones.
 
-Una vez finalizado el proceso, puedes verificar qué herramientas están correctamente instaladas ejecutando:
+Después, el sistema se actualiza completamente y se instalan herramientas clave para desarrollo: Git, Java JDK, Python 3, pip, Node.js, npm, PostgreSQL, Docker, curl, wget, gcc, make, unzip, zip, tar, net-tools, htop, lsof, tmux, zsh, jq, gpg, bat, neofetch, httrack, docker-compose y nmap. Para cada una se muestra su versión como confirmación.
+
+Al final, instala ZSH y configura automáticamente Oh My Zsh como shell por defecto.
+
+Una vez finalizada la instalación, puedes verificar que todo está correctamente instalado con el siguiente comando:
 
 ./verificar_instalacion.sh
 
-Este script no instala nada. Recorre todas las utilidades esperadas y genera un informe como este:
+Este script no instala nada. Solo recorre las herramientas esperadas y muestra un informe como este:
 
 ===== RESULTADOS DE VERIFICACIÓN =====  
 ✅ Git: git version 2.43.0  
@@ -35,8 +39,6 @@ Este script no instala nada. Recorre todas las utilidades esperadas y genera un 
 ===== FIN DE VERIFICACIÓN =====
 
 Este entorno ha sido probado en Ubuntu 20.04 y versiones superiores. Se requiere conexión a internet y privilegios sudo.
-
-Herramientas incluidas: Git, JDK, Python 3, pip, Node.js, npm, curl, wget, gcc, make, PostgreSQL, Docker, unzip, zip, tar, ifconfig (net-tools), htop, lsof, tmux, zsh, jq, gpg, batcat, neofetch, httrack, docker-compose y nmap.
 
 Este proyecto es de código abierto bajo licencia MIT. Puedes usarlo, modificarlo o compartirlo libremente.
 
